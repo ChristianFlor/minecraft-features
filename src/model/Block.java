@@ -1,21 +1,21 @@
 package model;
 
 public class Block {
-	public static final String STONE="src/ui.Img/Stone.png";
-	public static final String GRASS="src/ui.Img/Grass.png";
-	public static final String DIRT="src/ui.Img/Dirt.png";
-	public static final String COBBLESTONE="src/ui.Img/Cobblestone.png";
-	public static final String WATER="src/ui.Img/Water.png";
-	public static final String BROWN_MUSHROOM="src/ui.Img/Brown_Mushroom.png";
-	public static final String RED_MUSHROOM="src/ui.Img/Red_Mushroom.png";
-	public static final String OBSIDIAN="src/ui.Img/Obsidian.png";
-	public static final String FIRE="src/ui.Img/Fire.png";
-	public static final String SNOW="src/ui.Img/Snow.png";
-	public static final String ICE="src/ui.Img/Ice.png";
-	public static final String CACTUS="src/ui.Img/Cactus.png";
-	public static final String REEDS="src/ui.Img/Reeds.png";
-	public static final String VINE="src/ui.Img/Vine.png";
-	public static final String MYCELIUM="src/ui.Img/Mycelium.png";
+	public static final String STONE="File:imgs/Stone.png";
+	public static final String GRASS="File:imgs/Grass.png";
+	public static final String DIRT="File:imgs/Dirt.png";
+	public static final String COBBLESTONE="File:imgs/Cobblestone.png";
+	public static final String WATER="File:imgs/Water.png";
+	public static final String BROWN_MUSHROOM="File:imgs/Brown_Mushroom.png";
+	public static final String RED_MUSHROOM="File:imgs/Red_Mushroom.png";
+	public static final String OBSIDIAN="File:imgs/Obsidian.png";
+	public static final String FIRE="File:imgs/Fire.png";
+	public static final String SNOW="File:imgs/SNOW.png";
+	public static final String ICE="File:imgs/ICE.png";
+	public static final String CACTUS="File:imgs/CACTUS.png";
+	public static final String REEDS="File:imgs/Reeds.png";
+	public static final String VINE="File:imgs/Vine.png";
+	public static final String MYCELIUM="File:imgs/Mycelium.png";
 	public static final int MAX_AMOUNT=64;
 	private int amount;
 	private String type;
