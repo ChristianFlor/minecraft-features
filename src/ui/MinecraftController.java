@@ -60,13 +60,24 @@ public class MinecraftController {
 		scrollPane.setContent(gridFeature);
     	vBox.getChildren().add(gridInventory);
     	hBox.getChildren().add(gridBlocks);
-		
+    	
 		Button b= new Button();
 		b.setStyle( "-fx-background-color:  A9A9A9");
 		b.setGraphic(new ImageView("File:imgs/Stone.png"));
 		b.setOnAction(new EventHandler<ActionEvent>() {
+			int cont=0;
+			String msg=" ";
             @Override public void handle(ActionEvent e) {
+            	if(cont<64) {
+            	cont++;
             	gridInventory.add(new ImageView("File:imgs/Stone.png"), 0, 0);
+            	Label cantidad=new Label(msg);
+            	cantidad.setText(""+cont);
+            	cantidad.setStyle( "-fx-text-fill: white;"+"-fx-font-size : 16pt;");
+        		cantidad.setTranslateX(30);
+        		cantidad.setTranslateY(20);
+        		gridInventory.add(cantidad,0,0);
+            	}
             }
         });
 		gridBlocks.add(b, 0, 0);
