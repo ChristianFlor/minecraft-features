@@ -18,15 +18,16 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 
 public class MinecraftController {
 	private static final String BLANK = "File:imgs\"+File.separator+\"back.png";
 	@FXML
     private ScrollPane scrollPane;
     
-    private GridPane gridInventory;
-    private GridPane gridBlocks;
-    private GridPane gridFeature;
+    private static GridPane gridInventory;
+    private static GridPane gridBlocks;
+    private static GridPane gridFeature;
     
     @FXML
     private ComboBox<String> optionsType;
@@ -215,14 +216,38 @@ public class MinecraftController {
 				gridInventory.add(new ImageView("File:imgs/back.png"), i, j);
 			}
     	}
-		int[][] a= new int[11][1];
+		addFeature(1);
+		Label la= new Label("1");
+		la.setStyle( "-fx-text-fill: white;"+"-fx-font-size : 40pt;");
+		gridFeature.add(la,0,0);
+		Label mayor= new Label(">");
+		mayor.setStyle( "-fx-text-fill: white;"+"-fx-font-size : 40pt;");
+		
+		Button b15= new Button();
+		b15.setStyle( "-fx-background-color:  #1a4501");
+		b15.setGraphic(mayor);
+		b15.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+            	addFeature(2);
+            }
+        });
+		gridFeature.add(b15,10, 0);
+		optionsType.getItems().addAll("Stone","Grass","Dirt","CobbleStone","Water","Brown Mushroom");
+		
+	}
+	public static void addFeature(int n) {
+		int cont=1;
+		int[][] a= new int[10][n];
 		for (int i = 0; i < a.length; i++) {			
 			for (int j = 0; j < a[0].length; j++) {
 				gridFeature.add(new ImageView("File:imgs/feature.png"), i, j);
+				cont++;	
+				Label la= new Label(""+cont);
+				
+				la.setStyle( "-fx-text-fill: white;"+"-fx-font-size : 40pt;");
+				gridFeature.add(la,0,n);
 			}
     	}
-       
-		optionsType.getItems().addAll("Stone","Grass","Dirt","CobbleStone","Water","Brown Mushroom");
 		
 	}
 }
