@@ -1,0 +1,6 @@
+package model;
+
+public class InventoryHashTable<K,V> implements InterfaceHash<K,V> {
+	
+
+}

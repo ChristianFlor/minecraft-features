@@ -1,0 +1,6 @@
+1568494128391	Rename type 'Solution'
+1568497601639	Rename type 'InterfaceHash'
+1568497666821	Rename type 'InventoryHashTable'
+1568497759938	Rename type 'InterfaceHashTable'
+1568497945077	Encapsulate field 'type'
+1568497963251	Encapsulate field 'inventory'
