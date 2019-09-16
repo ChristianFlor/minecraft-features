@@ -250,11 +250,12 @@ public class MinecraftController {
 		optionsType.getItems().addAll("Stone","Grass","Dirt","CobbleStone","Water","Brown Mushroom","Red Mushroom","Obsidian","Fire","Snow","Ice","Cactus","Reeds","Vine","Mycelium");
 		
 	}
+	
 	public static void addFeature(int n) {
 		
 		sizeFeature= new int[10][n];
 		int cont= sizeFeature[0].length;
-		
+	
 		for (int i = 0; i < sizeFeature.length; i++) {			
 			for (int j = 0; j < sizeFeature[0].length; j++) {
 				gridFeature.add(new ImageView("File:imgs/feature.png"), i, j);
@@ -270,6 +271,7 @@ public class MinecraftController {
 		la.setStyle( "-fx-text-fill: white;"+"-fx-font-size : 40pt;");
 		gridFeature.add(la,0,cont-1);
 	}
+	
 	public static void addButton(int cont) {
 		Label mayor= new Label(">");
 		mayor.setStyle( "-fx-text-fill: white;"+"-fx-font-size : 40pt;");
