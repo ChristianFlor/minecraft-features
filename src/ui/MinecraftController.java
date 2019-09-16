@@ -259,7 +259,7 @@ public class MinecraftController {
 		la.setTranslateX(20);
 		la.setStyle( "-fx-text-fill: white;"+"-fx-font-size : 40pt;");
 		gridFeature.add(la,0,cont-1);
-		System.out.println(cont);
+		
 		Label mayor= new Label(">");
 		mayor.setStyle( "-fx-text-fill: white;"+"-fx-font-size : 40pt;");
 		
