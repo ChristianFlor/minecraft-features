@@ -1,8 +1,5 @@
 package ui;
 
-import java.util.ArrayList;
-
-import collections.HashTable;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -14,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+
 import model.Block;
 import model.Minecraft;
 
@@ -22,26 +20,30 @@ public class MinecraftController {
 	@FXML
     private ScrollPane scrollPane;
     
-    private static GridPane gridInventory;
-    private static GridPane gridBlocks;
-    private static GridPane gridFeature;
-    
     private Minecraft minecraft;
     
+
     @FXML
     private ComboBox<String> optionsType;
     @FXML
     private VBox vBox;
     @FXML
     private HBox hBox;
-   
-
+    
+    private static GridPane gridInventory;
+    private static GridPane gridBlocks;
+    private static GridPane gridFeature;
+    
+    private static int[][] sizeInventory= new int[9][4];
+    private static int[][] sizeFeature;
     @FXML
     void grouBlocks(ActionEvent event) {
 
     }
 
-   
+    public void addBlockToInventory(String block) {
+	   
+    }
 
 	public void initialize() {
 		
@@ -72,7 +74,7 @@ public class MinecraftController {
             @Override public void handle(ActionEvent e) {
             	if(cont<64) {
             	cont++;
-            	gridInventory.add(new ImageView("File:imgs/Stone.png"), 0, 0);
+            	gridInventory.add(new ImageView(Block.STONE), 0, 0);
             	Label cantidad=new Label(msg);
             	cantidad.setText(""+cont);
             	cantidad.setStyle( "-fx-text-fill: white;"+"-fx-font-size : 16pt;");
@@ -86,12 +88,12 @@ public class MinecraftController {
 		
 		Button b1= new Button();
 		b1.setStyle( "-fx-background-color:  A9A9A9");
-		b1.setGraphic(new ImageView("File:imgs/Grass.png"));
+		b1.setGraphic(new ImageView(Block.GRASS));
 		b1.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 System.out.println("1");
                 Block dirt = new Block(Block.DIRT);
-                minecraft.getInventory().search(dirt).add(dirt);
+                minecraft.addBlockToInventory(dirt);
                 
             }
         });
@@ -99,19 +101,19 @@ public class MinecraftController {
 		
 		Button b2= new Button();
 		b2.setStyle( "-fx-background-color:  A9A9A9");
-		b2.setGraphic(new ImageView("File:imgs/Dirt.png"));
+		b2.setGraphic(new ImageView(Block.DIRT));
 		b2.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 System.out.println("2");
-                Block dirt = new Block(Block.DIRT);
-                minecraft.getInventory().search(dirt).add(dirt);
+                Block stone = new Block(Block.STONE);
+                minecraft.addBlockToInventory(stone);
             }
         });
 		gridBlocks.add(b2, 2, 0);
 		
 		Button b3= new Button();
 		b3.setStyle( "-fx-background-color:  A9A9A9");
-		b3.setGraphic(new ImageView("File:imgs/Cobblestone.png"));
+		b3.setGraphic(new ImageView(Block.COBBLESTONE));
 		b3.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 System.out.println("3");
@@ -121,7 +123,7 @@ public class MinecraftController {
 		
 		Button b4= new Button();
 		b4.setStyle( "-fx-background-color:  A9A9A9");
-		b4.setGraphic(new ImageView("File:imgs/Water.png"));
+		b4.setGraphic(new ImageView(Block.WATER));
 		b4.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 System.out.println("4");
@@ -131,7 +133,7 @@ public class MinecraftController {
 		
 		Button b5= new Button();
 		b5.setStyle( "-fx-background-color:  A9A9A9");
-		b5.setGraphic(new ImageView("File:imgs/Brown_Mushroom.png"));
+		b5.setGraphic(new ImageView(Block.BROWN_MUSHROOM));
 		b5.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 System.out.println("5");
@@ -141,7 +143,7 @@ public class MinecraftController {
 		
 		Button b6= new Button();
 		b6.setStyle( "-fx-background-color:  A9A9A9");
-		b6.setGraphic(new ImageView("File:imgs/Red_Mushroom.png"));
+		b6.setGraphic(new ImageView(Block.RED_MUSHROOM));
 		b6.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 System.out.println("6");
@@ -151,7 +153,7 @@ public class MinecraftController {
 		
 		Button b7= new Button();
 		b7.setStyle( "-fx-background-color:  A9A9A9");
-		b7.setGraphic(new ImageView("File:imgs/Obsidian.png"));
+		b7.setGraphic(new ImageView(Block.OBSIDIAN));
 		b7.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 System.out.println("7");
@@ -161,7 +163,7 @@ public class MinecraftController {
 		
 		Button b8= new Button();
 		b8.setStyle( "-fx-background-color:  A9A9A9");
-		b8.setGraphic(new ImageView("File:imgs/Fire.png"));
+		b8.setGraphic(new ImageView(Block.FIRE));
 		b8.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 System.out.println("8");
@@ -171,7 +173,7 @@ public class MinecraftController {
 		
 		Button b9= new Button();
 		b9.setStyle( "-fx-background-color:  A9A9A9");
-		b9.setGraphic(new ImageView("File:imgs/SNOW.png"));
+		b9.setGraphic(new ImageView(Block.SNOW));
 		b9.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 System.out.println("9");
@@ -181,7 +183,7 @@ public class MinecraftController {
 		
 		Button b10= new Button();
 		b10.setStyle( "-fx-background-color:  A9A9A9");
-		b10.setGraphic(new ImageView("File:imgs/ICE.png"));
+		b10.setGraphic(new ImageView(Block.ICE));
 		b10.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 System.out.println("10");
@@ -191,7 +193,7 @@ public class MinecraftController {
 		
 		Button b11= new Button();
 		b11.setStyle( "-fx-background-color:  A9A9A9");
-		b11.setGraphic(new ImageView("File:imgs/CACTUS.png"));
+		b11.setGraphic(new ImageView(Block.CACTUS));
 		b11.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 System.out.println("11");
@@ -201,7 +203,7 @@ public class MinecraftController {
 		
 		Button b12= new Button();
 		b12.setStyle( "-fx-background-color:  A9A9A9");
-		b12.setGraphic(new ImageView("File:imgs/Reeds.png"));
+		b12.setGraphic(new ImageView(Block.REEDS));
 		b12.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 System.out.println("12");
@@ -211,7 +213,7 @@ public class MinecraftController {
 		
 		Button b13= new Button();
 		b13.setStyle( "-fx-background-color:  A9A9A9");
-		b13.setGraphic(new ImageView("File:imgs/Vine.png"));
+		b13.setGraphic(new ImageView(Block.VINE));
 		b13.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 System.out.println("13");
@@ -221,23 +223,32 @@ public class MinecraftController {
 		
 		Button b14= new Button();
 		b14.setStyle( "-fx-background-color:  A9A9A9");
-		b14.setGraphic(new ImageView("File:imgs/Mycelium.png"));
+		b14.setGraphic(new ImageView(Block.MYCELIUM));
 		b14.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 System.out.println("14");
             }
         });
 		gridBlocks.add(b14,6, 1);
-		int[][] c= new int[9][4];
-		for (int i = 0; i < c.length; i++) {			
-			for (int j = 0; j < c[0].length; j++) {
+		
+		for (int i = 0; i < sizeInventory.length; i++) {			
+			for (int j = 0; j < sizeInventory[0].length; j++) {
 				gridInventory.add(new ImageView("File:imgs/back.png"), i, j);
 			}
     	}
-		addFeature(1);
-		Label la= new Label("1");
+
+		sizeFeature= new int[10][1];
+		int cont= sizeFeature[0].length;
+		for (int i = 0; i < sizeFeature.length; i++) {			
+			for (int j = 0; j < sizeFeature[0].length; j++) {
+				gridFeature.add(new ImageView("File:imgs/feature.png"), i, j);
+			}
+    	}
+		Label la= new Label(""+cont);
+		la.setTranslateX(20);
 		la.setStyle( "-fx-text-fill: white;"+"-fx-font-size : 40pt;");
-		gridFeature.add(la,0,0);
+		gridFeature.add(la,0,cont-1);
+		System.out.println(cont);
 		Label mayor= new Label(">");
 		mayor.setStyle( "-fx-text-fill: white;"+"-fx-font-size : 40pt;");
 		
@@ -246,26 +257,45 @@ public class MinecraftController {
 		b15.setGraphic(mayor);
 		b15.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
-            	addFeature(2);
+            	addFeature(cont+1);
             }
         });
 		gridFeature.add(b15,10, 0);
-		optionsType.getItems().addAll("Stone","Grass","Dirt","CobbleStone","Water","Brown Mushroom");
+		optionsType.getItems().addAll("Stone","Grass","Dirt","CobbleStone","Water","Brown Mushroom","Red Mushroom","Obsidian","Fire","Snow","Ice","Cactus","Reeds","Vine","Mycelium");
 		
 	}
 	public static void addFeature(int n) {
-		int cont=1;
-		int[][] a= new int[10][n];
-		for (int i = 0; i < a.length; i++) {			
-			for (int j = 0; j < a[0].length; j++) {
+		
+		sizeFeature= new int[10][n];
+		int cont= sizeFeature[0].length;
+		
+		for (int i = 0; i < sizeFeature.length; i++) {			
+			for (int j = 0; j < sizeFeature[0].length; j++) {
 				gridFeature.add(new ImageView("File:imgs/feature.png"), i, j);
-				cont++;	
-				Label la= new Label(""+cont);
-				
-				la.setStyle( "-fx-text-fill: white;"+"-fx-font-size : 40pt;");
-				gridFeature.add(la,0,n);
+				addCont(cont);
+				addButton(cont);
 			}
     	}
 		
 	}
+	public static void addCont(int cont) {
+		Label la= new Label(""+(cont));
+		la.setTranslateX(20);
+		la.setStyle( "-fx-text-fill: white;"+"-fx-font-size : 40pt;");
+		gridFeature.add(la,0,cont-1);
+	}
+	public static void addButton(int cont) {
+		Label mayor= new Label(">");
+		mayor.setStyle( "-fx-text-fill: white;"+"-fx-font-size : 40pt;");
+		Button b15= new Button();
+		b15.setStyle( "-fx-background-color:  #1a4501");
+		b15.setGraphic(mayor);
+		b15.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+            	addFeature(cont+1);
+            }
+        });
+		gridFeature.add(b15,10, cont-1);
+	}
+	
 }
