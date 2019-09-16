@@ -292,7 +292,7 @@ public class MinecraftController {
 	}
 	public static void addCont(int cont) {
 		Label la= new Label(""+(cont));
-		la.setTranslateX(20);
+		la.setTranslateX(12);
 		la.setStyle( "-fx-text-fill: white;"+"-fx-font-size : 40pt;");
 		gridFeature.add(la,0,cont-1);
 	}
