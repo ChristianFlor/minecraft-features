@@ -42,8 +42,26 @@ public class MinecraftController {
 
     }
 
-    public void addBlockToInventory(String block) {
-	   
+    public String[] verification(int cont) {
+    	String[] n= new String[3];
+	   boolean flag =false;
+	   for (int i = 0; i < sizeInventory.length && !flag; i++) {			
+			for (int j = 0; j < sizeInventory[0].length && !flag ; j++) {
+				if(cont <64 && sizeInventory[i][j]==0) {
+					n[0]=i+"";
+					n[1]=j+"";
+					n[2]="true";
+					flag=true;
+				}else if(sizeInventory[i][j]==1){
+					n[0]="0";
+					n[1]="0";
+					n[2]="false";
+					flag=false;
+				}
+				
+			}
+	   }
+    	return n;
     }
 
 	public void initialize() {
@@ -65,24 +83,36 @@ public class MinecraftController {
 		scrollPane.setContent(gridFeature);
     	vBox.getChildren().add(gridInventory);
     	hBox.getChildren().add(gridBlocks);
-    	
+    	for (int i = 0; i < sizeInventory.length; i++) {			
+			for (int j = 0; j < sizeInventory[0].length; j++) {
+				sizeInventory[i][j]=0;
+			}
+    	}
 		Button b= new Button();
 		b.setStyle( "-fx-background-color:  A9A9A9");
-		b.setGraphic(new ImageView("File:imgs/Stone.png"));
+		b.setGraphic(new ImageView(Block.STONE));
 		b.setOnAction(new EventHandler<ActionEvent>() {
 			int cont=0;
 			String msg=" ";
+			boolean b= Boolean.parseBoolean(verification(cont)[2]);
+        	int i= Integer.parseInt(verification(cont)[0]);
+        	int j= Integer.parseInt(verification(cont)[1]);
             @Override public void handle(ActionEvent e) {
-            	if(cont<64) {
-            	cont++;
-            	gridInventory.add(new ImageView(Block.STONE), 0, 0);
-            	Label cantidad=new Label(msg);
-            	cantidad.setText(""+cont);
-            	cantidad.setStyle( "-fx-text-fill: white;"+"-fx-font-size : 16pt;");
-        		cantidad.setTranslateX(30);
-        		cantidad.setTranslateY(20);
-        		gridInventory.add(cantidad,0,0);
-            	}
+            	System.out.println(b);
+            	if(cont<64 && b) {
+	            	cont++;
+	            	gridInventory.add(new ImageView(Block.STONE), i, j);
+	            	Label cantidad=new Label(msg);
+	            	cantidad.setText(""+cont);
+	            	cantidad.setStyle( "-fx-text-fill: white;"+"-fx-font-size : 16pt;");
+	        		cantidad.setTranslateX(30);
+	        		cantidad.setTranslateY(20);
+	        		minecraft.addBlockToInventory(Minecraft.STONE);
+	        		System.out.println(minecraft.getInventory());
+	        		gridInventory.add(cantidad,i,j);
+	        		sizeInventory[i][j]=1;
+	            }
+            	
             }
         });
 		gridBlocks.add(b, 0, 0);
@@ -91,11 +121,34 @@ public class MinecraftController {
 		b1.setStyle( "-fx-background-color:  A9A9A9");
 		b1.setGraphic(new ImageView(Block.GRASS));
 		b1.setOnAction(new EventHandler<ActionEvent>() {
+			int cont=0;
+			String msg=" ";
+			boolean b= Boolean.parseBoolean(verification(cont)[2]);
+        	int i= Integer.parseInt(verification(cont)[0]);
+        	int j= Integer.parseInt(verification(cont)[1]);
+            @Override public void handle(ActionEvent e) {
+            	System.out.println(b);
+            	if(cont<64 && b) {
+	            	cont++;
+	            	gridInventory.add(new ImageView(Block.GRASS), i, j);
+	            	Label cantidad=new Label(msg);
+	            	cantidad.setText(""+cont);
+	            	cantidad.setStyle( "-fx-text-fill: white;"+"-fx-font-size : 16pt;");
+	        		cantidad.setTranslateX(30);
+	        		cantidad.setTranslateY(20);
+	        		minecraft.addBlockToInventory(Minecraft.GRASS);
+	        		System.out.println(minecraft.getInventory());
+	        		gridInventory.add(cantidad,i,j);
+	        		sizeInventory[i][j]=1;
+	            }
+            	
+            }
+			/*
             @Override public void handle(ActionEvent e) {
                 System.out.println("1");
                 minecraft.addBlockToInventory(Minecraft.GRASS);
                 System.out.println(minecraft.getInventory());
-            }
+            }*/
         });
 		gridBlocks.add(b1, 1, 0);
 		
