@@ -40,6 +40,7 @@ public class Queue<T>{
 			laters = laters.getNext();
 		}
 		size++;
+		System.out.println("Queue of type: " + object.toString() +", size = " + size);
 	}
 
 	public T peek() {
@@ -61,6 +62,17 @@ public class Queue<T>{
 	
 	public int getSize() {
 		return size;
+	}
+	
+	@Override
+	public String toString() {
+		Node<T> temp = first;
+		String s = "";
+		while(temp != null) {
+			s += temp.toString() + "-";
+			temp = temp.getNext();
+		}
+		return s;
 	}
 	
 }
