@@ -11,12 +11,18 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+
 import model.Block;
+import model.Minecraft;
 
 public class MinecraftController {
 	private static final String BLANK = "File:imgs\"+File.separator+\"back.png";
 	@FXML
     private ScrollPane scrollPane;
+    
+    private Minecraft minecraft;
+    
+
     @FXML
     private ComboBox<String> optionsType;
     @FXML
@@ -35,11 +41,14 @@ public class MinecraftController {
 
     }
 
-   public void addBlockToInventory(String block) {
+    public void addBlockToInventory(String block) {
 	   
-   }
+    }
 
 	public void initialize() {
+		
+		minecraft = new Minecraft();
+		
 		gridInventory = new GridPane();
 		gridInventory.setHgap(3);
 		gridInventory.setVgap(3);
@@ -83,6 +92,9 @@ public class MinecraftController {
 		b1.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 System.out.println("1");
+                Block dirt = new Block(Block.DIRT);
+                minecraft.addBlockToInventory(dirt);
+                
             }
         });
 		gridBlocks.add(b1, 1, 0);
@@ -93,6 +105,8 @@ public class MinecraftController {
 		b2.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 System.out.println("2");
+                Block stone = new Block(Block.STONE);
+                minecraft.addBlockToInventory(stone);
             }
         });
 		gridBlocks.add(b2, 2, 0);

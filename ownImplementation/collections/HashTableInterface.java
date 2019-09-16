@@ -1,4 +1,4 @@
-package model;
+package collections;
 
 public interface HashTableInterface<K,V> {
 	V search(K key);

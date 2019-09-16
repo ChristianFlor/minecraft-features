@@ -1,4 +1,4 @@
-package model;
+package collections;
 
 public class HNode<K,V> {
 		private K key;

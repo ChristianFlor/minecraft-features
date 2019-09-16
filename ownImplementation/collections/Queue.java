@@ -18,6 +18,8 @@ public class Queue<T>{
 	 */
 	private Node<T> laters;
 	
+	private int size;
+	
 	
 	/**
 	 *	Create an object of Queue type that can contains elements of T type
@@ -25,6 +27,7 @@ public class Queue<T>{
 	public Queue() {
 		first = null;
 		laters = null;
+		size = 0;
 	}
 	
 	public void offer(T object) {
@@ -36,6 +39,7 @@ public class Queue<T>{
 			laters.getNext().setPrior(laters);
 			laters = laters.getNext();
 		}
+		size++;
 	}
 	
 	public T peek() {
@@ -48,8 +52,13 @@ public class Queue<T>{
 			temp = first.getElement();
 			first = first.getNext();
 			first.setPrior(null);
+			size--;
 		}
 		return temp;
+	}
+	
+	public int getSize() {
+		return size;
 	}
 	
 	
