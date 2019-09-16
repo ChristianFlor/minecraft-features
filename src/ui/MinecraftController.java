@@ -93,8 +93,7 @@ public class MinecraftController {
 		b1.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 System.out.println("1");
-                Block dirt = new Block(Block.DIRT);
-                minecraft.addBlockToInventory(dirt);
+                minecraft.addBlockToInventory(Minecraft.DIRT);
                 
             }
         });
@@ -106,8 +105,7 @@ public class MinecraftController {
 		b2.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 System.out.println("2");
-                Block stone = new Block(Block.STONE);
-                minecraft.addBlockToInventory(stone);
+                minecraft.addBlockToInventory(Minecraft.STONE);
             }
         });
 		gridBlocks.add(b2, 2, 0);

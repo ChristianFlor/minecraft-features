@@ -1,5 +1,8 @@
 package collections;
 
+/**
+ * @author Jesus Daniel Villota
+ */
 public class HNode<K,V> {
 		private K key;
 		private V value;

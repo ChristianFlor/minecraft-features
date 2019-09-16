@@ -7,7 +7,7 @@ package collections;
  * @author Natalia Gonzalez
  * 	The Stack Class allows stacking objects of particular type T
  */
-public class Stack<T> {
+public class Stack<T> implements StackInterface<T> {
 	
 	/**
 	 *	Represents the first element in the stack
@@ -25,6 +25,7 @@ public class Stack<T> {
 	 *	Add an item to the stack
 	 *	@param obejct is an object of T type
 	 */
+	@Override
 	public void push(T object) {
 		if(first == null) {
 			first = new Node<T>(object);
@@ -39,6 +40,7 @@ public class Stack<T> {
 	/**
 	 *	
 	 */
+	@Override
 	public T peek() {
 		return first.getElement();
 	}

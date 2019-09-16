@@ -1,5 +1,9 @@
 package collections;
 
+/**
+ * @author Jesus Daniel Villota
+ * 
+ */
 public class HashTable<K,V> implements HashTableInterface<K,V> {
 	
 	public static final int ARR_SIZE = 127;

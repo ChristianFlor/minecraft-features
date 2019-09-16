@@ -8,19 +8,35 @@ import collections.Stack;
 
 public class Minecraft {
 
-	private HashTable<Block, ArrayList<Queue<Block>>> inventory;
+	public static final String STONE = "Stone";
+	public static final String GRASS = "Grass";
+	public static final String DIRT = "Dirt";
+	public static final String COBBLESTONE = "Cobblestone";
+	public static final String WATER = "Water";
+	public static final String BROWN_MUSHROOM = "Brown_Mushroom";
+	public static final String RED_MUSHROOM = "Red_Mushroom";
+	public static final String OBSIDIAN = "Obsidian";
+	public static final String FIRE = "Fire";
+	public static final String SNOW = "SNOW";
+	public static final String ICE = "ICE";
+	public static final String CACTUS = "CACTUS";
+	public static final String REEDS = "Reeds";
+	public static final String VINE = "Vine";
+	public static final String MYCELIUM = "Mycelium";
+	
+	private HashTable<String, ArrayList<Queue<Block>>> inventory;
 	private Queue<Stack<Block>> quickAccessBar;
 	
 	public Minecraft() {
-		this.inventory = new HashTable<Block, ArrayList<Queue<Block>>>();
+		this.inventory = new HashTable<String, ArrayList<Queue<Block>>>();
 		this.quickAccessBar = new Queue<Stack<Block>>();
 	}
 
-	public HashTable<Block, ArrayList<Queue<Block>>> getInventory() {
+	public HashTable<String, ArrayList<Queue<Block>>> getInventory() {
 		return inventory;
 	}
 
-	public void setInventory(HashTable<Block, ArrayList<Queue<Block>>> inventory) {
+	public void setInventory(HashTable<String, ArrayList<Queue<Block>>> inventory) {
 		this.inventory = inventory;
 	}
 
@@ -32,14 +48,15 @@ public class Minecraft {
 		this.quickAccessBar = quickAccessBar;
 	}
 	
-	public void addBlockToInventory(Block block) {
-		ArrayList<Queue<Block>> actual = inventory.search(block);
+	public void addBlockToInventory(String type) {
+		Block block = new Block(type);
+		ArrayList<Queue<Block>> actual = inventory.search(type);
 		if(actual == null) {
 			actual = new ArrayList<>();
 			Queue<Block> q = new Queue<>();
 			q.offer(block);
 			actual.add(q);
-			inventory.insert(block, actual);
+			inventory.insert(type, actual);
 		} else {
 			int last = actual.size()-1;
 			if(actual.get(last).getSize() < 64) {
