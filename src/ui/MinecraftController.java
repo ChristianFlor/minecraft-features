@@ -28,8 +28,8 @@ public class MinecraftController {
     private static GridPane gridBlocks;
     private static GridPane gridFeature;
     
-    int[][] sizeInventory= new int[9][4];
-    
+    private static int[][] sizeInventory= new int[9][4];
+    private static int[][] sizeFeature;
     @FXML
     void grouBlocks(ActionEvent event) {
 
@@ -209,7 +209,7 @@ public class MinecraftController {
 		
 		Button b14= new Button();
 		b14.setStyle( "-fx-background-color:  A9A9A9");
-		b14.setGraphic(new ImageView(Block.VINE));
+		b14.setGraphic(new ImageView(Block.MYCELIUM));
 		b14.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 System.out.println("14");
@@ -222,10 +222,19 @@ public class MinecraftController {
 				gridInventory.add(new ImageView("File:imgs/back.png"), i, j);
 			}
     	}
-		addFeature(1);
-		Label la= new Label("1");
+
+		sizeFeature= new int[10][1];
+		int cont= sizeFeature[0].length;
+		for (int i = 0; i < sizeFeature.length; i++) {			
+			for (int j = 0; j < sizeFeature[0].length; j++) {
+				gridFeature.add(new ImageView("File:imgs/feature.png"), i, j);
+			}
+    	}
+		Label la= new Label(""+cont);
+		la.setTranslateX(20);
 		la.setStyle( "-fx-text-fill: white;"+"-fx-font-size : 40pt;");
-		gridFeature.add(la,0,0);
+		gridFeature.add(la,0,cont-1);
+		System.out.println(cont);
 		Label mayor= new Label(">");
 		mayor.setStyle( "-fx-text-fill: white;"+"-fx-font-size : 40pt;");
 		
@@ -234,7 +243,7 @@ public class MinecraftController {
 		b15.setGraphic(mayor);
 		b15.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
-            	addFeature(2);
+            	addFeature(cont+1);
             }
         });
 		gridFeature.add(b15,10, 0);
@@ -242,18 +251,37 @@ public class MinecraftController {
 		
 	}
 	public static void addFeature(int n) {
-		int cont=1;
-		int[][] a= new int[10][n];
-		for (int i = 0; i < a.length; i++) {			
-			for (int j = 0; j < a[0].length; j++) {
+		
+		sizeFeature= new int[10][n];
+		int cont= sizeFeature[0].length;
+		
+		for (int i = 0; i < sizeFeature.length; i++) {			
+			for (int j = 0; j < sizeFeature[0].length; j++) {
 				gridFeature.add(new ImageView("File:imgs/feature.png"), i, j);
-				cont++;	
-				Label la= new Label(""+cont);
-				la.setTranslateX(30);
-				la.setStyle( "-fx-text-fill: white;"+"-fx-font-size : 40pt;");
-				gridFeature.add(la,0,n);
+				addCont(cont);
+				addButton(cont);
 			}
     	}
 		
 	}
+	public static void addCont(int cont) {
+		Label la= new Label(""+(cont));
+		la.setTranslateX(20);
+		la.setStyle( "-fx-text-fill: white;"+"-fx-font-size : 40pt;");
+		gridFeature.add(la,0,cont-1);
+	}
+	public static void addButton(int cont) {
+		Label mayor= new Label(">");
+		mayor.setStyle( "-fx-text-fill: white;"+"-fx-font-size : 40pt;");
+		Button b15= new Button();
+		b15.setStyle( "-fx-background-color:  #1a4501");
+		b15.setGraphic(mayor);
+		b15.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+            	addFeature(cont+1);
+            }
+        });
+		gridFeature.add(b15,10, cont-1);
+	}
+	
 }
