@@ -74,4 +74,9 @@ public class Block {
 
 		return reducido;
 	}*/
+	
+	@Override
+	public String toString() {
+		return type;
+	}
 }
