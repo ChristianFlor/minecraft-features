@@ -7,7 +7,7 @@ package collections;
  * @author Natalia Gonzalez
  *
  */
-public class Queue<T> implements QueueInterface<T> {
+public class Queue<T>{
 	
 	/**
 	 *	represents the first element in the stack
@@ -29,7 +29,7 @@ public class Queue<T> implements QueueInterface<T> {
 		laters = null;
 		size = 0;
 	}
-	@Override
+
 	public void offer(T object) {
 		if(first==null) {
 			first = new Node<T>(object);
@@ -42,18 +42,19 @@ public class Queue<T> implements QueueInterface<T> {
 		size++;
 		System.out.println("Queue of type: " + object.toString() +", size = " + size);
 	}
-	@Override
+
 	public T peek() {
 		return first != null ? first.getElement() : null;
 	}
 	
-	@Override
 	public T poll() {
 		T temp = null;
 		if(first != null) {
 			temp = first.getElement();
 			first = first.getNext();
-			first.setPrior(null);
+			if(first!= null) {
+				first.setPrior(null);
+			}
 			size--;
 		}
 		return temp;

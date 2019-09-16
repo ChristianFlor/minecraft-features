@@ -42,7 +42,11 @@ public class Stack<T> implements StackInterface<T> {
 	 */
 	@Override
 	public T peek() {
-		return first.getElement();
+		T temp = null;
+		if(first != null) {
+			temp = first.getElement();
+		}
+		return temp;
 	}
 	
 	public T pop() {
@@ -50,11 +54,16 @@ public class Stack<T> implements StackInterface<T> {
 		if(first != null) {
 			temp = first.getElement();
 			first = first.getNext();
-			first.setPrior(null);
+			if(first !=null) {
+				first.setPrior(null);
+			}
 		}
 		return temp;
 	}
 	
+	public boolean empty() {
+		return first == null;
+	}
 	
 	
 }
