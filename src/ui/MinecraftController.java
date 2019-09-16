@@ -16,6 +16,7 @@ import model.Block;
 import model.Minecraft;
 
 public class MinecraftController {
+	
 	private static final String BLANK = "File:imgs\"+File.separator+\"back.png";
 	@FXML
     private ScrollPane scrollPane;
