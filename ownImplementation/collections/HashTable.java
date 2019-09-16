@@ -1,4 +1,4 @@
-package model;
+package collections;
 
 public class HashTable<K,V> implements HashTableInterface<K,V> {
 	
@@ -11,6 +11,10 @@ public class HashTable<K,V> implements HashTableInterface<K,V> {
 		for(int i=0; i < ARR_SIZE; i++) {
 			nodes[i] = null;
 		}
+	}
+	
+	public HNode<K, V>[] getNodes() {
+		return nodes;
 	}
 
 	private V getValue(K key) {

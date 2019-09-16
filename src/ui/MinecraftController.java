@@ -1,8 +1,8 @@
 package ui;
 
-import java.awt.Color;
-import java.io.File;
+import java.util.ArrayList;
 
+import collections.HashTable;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -10,15 +10,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
+import model.Block;
+import model.Minecraft;
 
 public class MinecraftController {
 	private static final String BLANK = "File:imgs\"+File.separator+\"back.png";
@@ -28,6 +25,8 @@ public class MinecraftController {
     private static GridPane gridInventory;
     private static GridPane gridBlocks;
     private static GridPane gridFeature;
+    
+    private Minecraft minecraft;
     
     @FXML
     private ComboBox<String> optionsType;
@@ -45,6 +44,9 @@ public class MinecraftController {
    
 
 	public void initialize() {
+		
+		minecraft = new Minecraft();
+		
 		gridInventory = new GridPane();
 		gridInventory.setHgap(3);
 		gridInventory.setVgap(3);
@@ -88,6 +90,9 @@ public class MinecraftController {
 		b1.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 System.out.println("1");
+                Block dirt = new Block(Block.DIRT);
+                minecraft.getInventory().search(dirt).add(dirt);
+                
             }
         });
 		gridBlocks.add(b1, 1, 0);
@@ -98,6 +103,8 @@ public class MinecraftController {
 		b2.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 System.out.println("2");
+                Block dirt = new Block(Block.DIRT);
+                minecraft.getInventory().search(dirt).add(dirt);
             }
         });
 		gridBlocks.add(b2, 2, 0);
