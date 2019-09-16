@@ -101,5 +101,14 @@ public class HashTable<K,V> implements HashTableInterface<K,V> {
 		}
 		return false;
 	}
+	
+	@Override
+	public String toString() {
+		String s = "";
+		for (int i = 0; i < nodes.length && nodes[i] != null; i++) {
+			s+= nodes[i].getValue().toString() + ".";
+		}
+		return s;
+	}
 
 }

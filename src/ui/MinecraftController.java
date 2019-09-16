@@ -93,8 +93,8 @@ public class MinecraftController {
 		b1.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 System.out.println("1");
-                minecraft.addBlockToInventory(Minecraft.DIRT);
-                
+                minecraft.addBlockToInventory(Minecraft.GRASS);
+                System.out.println(minecraft.getInventory());
             }
         });
 		gridBlocks.add(b1, 1, 0);
@@ -105,7 +105,7 @@ public class MinecraftController {
 		b2.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 System.out.println("2");
-                minecraft.addBlockToInventory(Minecraft.STONE);
+                minecraft.addBlockToInventory(Minecraft.DIRT);
             }
         });
 		gridBlocks.add(b2, 2, 0);
@@ -116,6 +116,7 @@ public class MinecraftController {
 		b3.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 System.out.println("3");
+                minecraft.addBlockToInventory(Minecraft.COBBLESTONE);
             }
         });
 		gridBlocks.add(b3, 3, 0);
@@ -126,6 +127,7 @@ public class MinecraftController {
 		b4.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 System.out.println("4");
+                minecraft.addBlockToInventory(Minecraft.WATER);
             }
         });
 		gridBlocks.add(b4, 4, 0);
@@ -136,6 +138,7 @@ public class MinecraftController {
 		b5.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 System.out.println("5");
+                minecraft.addBlockToInventory(Minecraft.BROWN_MUSHROOM);
             }
         });
 		gridBlocks.add(b5, 5, 0);
@@ -146,6 +149,7 @@ public class MinecraftController {
 		b6.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 System.out.println("6");
+                minecraft.addBlockToInventory(Minecraft.RED_MUSHROOM);
             }
         });
 		gridBlocks.add(b6, 6, 0);
@@ -156,6 +160,7 @@ public class MinecraftController {
 		b7.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 System.out.println("7");
+                minecraft.addBlockToInventory(Minecraft.OBSIDIAN);
             }
         });
 		gridBlocks.add(b7, 7, 0);
@@ -166,6 +171,7 @@ public class MinecraftController {
 		b8.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 System.out.println("8");
+                minecraft.addBlockToInventory(Minecraft.FIRE);
             }
         });
 		gridBlocks.add(b8, 0, 1);
@@ -176,6 +182,7 @@ public class MinecraftController {
 		b9.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 System.out.println("9");
+                minecraft.addBlockToInventory(Minecraft.SNOW);
             }
         });
 		gridBlocks.add(b9, 1, 1);
@@ -186,6 +193,7 @@ public class MinecraftController {
 		b10.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 System.out.println("10");
+                minecraft.addBlockToInventory(Minecraft.ICE);
             }
         });
 		gridBlocks.add(b10, 2, 1);
@@ -196,6 +204,7 @@ public class MinecraftController {
 		b11.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 System.out.println("11");
+                minecraft.addBlockToInventory(Minecraft.CACTUS);
             }
         });
 		gridBlocks.add(b11, 3, 1);
@@ -206,6 +215,7 @@ public class MinecraftController {
 		b12.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 System.out.println("12");
+                minecraft.addBlockToInventory(Minecraft.REEDS);
             }
         });
 		gridBlocks.add(b12,4, 1);
@@ -216,6 +226,7 @@ public class MinecraftController {
 		b13.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 System.out.println("13");
+                minecraft.addBlockToInventory(Minecraft.VINE);
             }
         });
 		gridBlocks.add(b13,5, 1);
@@ -226,6 +237,7 @@ public class MinecraftController {
 		b14.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 System.out.println("14");
+                minecraft.addBlockToInventory(Minecraft.MYCELIUM);
             }
         });
 		gridBlocks.add(b14,6, 1);

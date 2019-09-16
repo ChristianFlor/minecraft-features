@@ -52,15 +52,26 @@ public class Minecraft {
 		Block block = new Block(type);
 		ArrayList<Queue<Block>> actual = inventory.search(type);
 		if(actual == null) {
-			actual = new ArrayList<>();
+			actual = new ArrayList<Queue<Block>>();
 			Queue<Block> q = new Queue<>();
 			q.offer(block);
 			actual.add(q);
 			inventory.insert(type, actual);
 		} else {
 			int last = actual.size()-1;
-			if(actual.get(last).getSize() < 64) {
-				actual.get(last).offer(block);
+			if(actual.isEmpty()) {
+				Queue<Block> q = new Queue<>();
+				q.offer(block);
+				actual.add(q);
+			}
+			else {			
+				if(actual.get(last).getSize() < 64) {
+					actual.get(last).offer(block);
+				} else {
+					Queue<Block> q = new Queue<>();
+					q.offer(block);
+					actual.add(q);
+				}
 			}
 		}
 	}
